@@ -63,6 +63,7 @@ jobs:
      uses: actions/checkout@v2
    - name: Push Docker image
      run: |
-       sudo docker login -u udil.mage.more000@gmail.com ashul.jfrog.io -p ${{cmVmdGtuOjAxOjE3Mjg3MjI4NTA6YVVPdTQ1eTJ5VTlvMU8xRm1pNXhIS21KSjdq}}  https://ashul.jfrog.io/artifactory/api/docker/my-jfrog-repository
-       sudo docker tag my-node-app:latest ashul.jfrog.io/my-jfrog-repository /my-jfrog-repository/my-node-app:latest
-       sudo docker push ashul.jfrog.io/my-jfrog-repository/my-jfrog-repository/my-node-app:latest
+      sudo docker login -udil.mage.more000@gmail.com ashul.jfrog.io -p ${{secrets.DOCKER_PASSWORD }} ashul.jfrog.io
+      sudo docker tag my-node-app:latest ashul.jfrog.io/my-jfrog-repository/my-node-app:latest
+      sudo docker push ashul.jfrog.io/my-jfrog-repository/my-node-app:latest
+       
