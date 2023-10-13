@@ -55,3 +55,14 @@ jobs:
             - name: check docker images
               run: |
                  sudo docker images
+ Pushing_Docker_image_in_jfrog:
+  needs: Create_Docker_image
+  runs-on: self-hosted
+  steps:
+   - name: Checkout code
+     uses: actions/checkout@v2
+   - name: Push Docker image
+     run: |
+       sudo docker login -u udil.mage.more000@gmail.com ashul.jfrog.io -p ${{ cmVmdGtuOjAxOjE3Mjg3MjI4NTA6YVVPdTQ1eTJ5VTlvMU8xRm1pNXhIS21KSjdq}}  https://ashul.jfrog.io/artifactory/api/docker/my-jfrog-repository
+       sudo docker tag my-node-app:latest ashul.jfrog.io/my-jfrog-repository /my-jfrog-repository/my-node-app:latest
+       sudo docker push ashul.jfrog.io/my-jfrog-repository/my-jfrog-repository/my-node-app:latest
