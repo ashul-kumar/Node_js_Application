@@ -106,12 +106,11 @@ jobs:
             aws ecs list-task-definitions
     - name: Fetch Revision number of Task_Definition
       run: |
-        latest_revision=$(aws ecs describe-task-definition --task-definition node-app-deploy-studentXX --query 'taskDefinition.revision')
-         echo "Latest revision: $latest_revision"
+        latest_revision=$(aws ecs describe-task-definition --task-definition node-app-deploy-student103 --query 'taskDefinition.revision')
+        echo "Latest revision: $latest_revision"
     - name: Check if ECS service exists
       id: check-service
       run: |
        service_name="my-node-service-student103"
-       existing_service=$(aws ecs describe-services --cluster
-       my-node-student103 --services $service_name --query 'services[0].serviceName' --output text)
+       existing_service=$(aws ecs describe-services --cluster my-node-student103 --services $service_name --query 'services[0].serviceName' --output text)
        echo "service_exists=$existing_service" >> $GITHUB_ENV
