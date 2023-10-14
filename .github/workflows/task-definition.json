@@ -2,7 +2,7 @@
   "containerDefinitions": [
     {
       "name": "node-app",
-      "image": "<Jfrog_image:latest>",
+      "image": "ashul.jfrog.io/my-jfrog-repository/my-node-app:latest",
       "repositoryCredentials": {
       "credentialsParameter": "arn:aws:ecs:us-west-2:340704870584:cluster/my-node-student103"
     },
