@@ -129,8 +129,8 @@ jobs:
         fi
     - name: Wait for the service to stabilize
       run: |
-         echo "Waiting for service to stabilize..."
-         aws ecs wait services-stable --cluster my-node-student103 --services my-node-service-student103
+       echo "Waiting for service to stabilize..."
+       aws ecs wait services-stable --cluster my-node-student103 --services my-node-service-student103
     - name: Featch_Public_IP_Address
       run: |
        task_id=$(aws ecs list-tasks --cluster my-node-student103 --family node-app-deploy-student103 --query 'taskArns[0]' --output text | awk -F / '{print $NF}')
