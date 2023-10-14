@@ -24,7 +24,7 @@
     ],
     "family": "node-app-deploy-studentXX",
     "executionRoleArn":
-  "arn:aws:iam::340704870584:role/ecsTaskExecutionRole",
+    "arn:aws:iam::340704870584:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "volumes": [],
     "placementConstraints": [],
