@@ -4,7 +4,7 @@
       "name": "node-app",
       "image": "ashul.jfrog.io/my-jfrog-repository/my-node-app:latest",
       "repositoryCredentials": {
-      "credentialsParameter": "arn:aws:ecs:us-west-2:340704870584:cluster/my-node-student103"
+      "credentialsParameter": "arn:aws:secretsmanager:us-west-2:340704870584:secret:student103-9hPFjf"
     },
       "cpu": 0,
       "portMappings": [
