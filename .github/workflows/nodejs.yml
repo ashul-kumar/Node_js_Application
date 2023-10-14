@@ -127,3 +127,14 @@ jobs:
          echo "Latest revision: $latest_revision"
          aws ecs create-service --cluster my-node-student103 --service-name my-node-service-student103 --task-definition node-app-deploy-student103:$latest_revision --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-0ab5a9b7768b9b147],securityGroups=[sg-014331ad55ed36e96],assignPublicIp=ENABLED}"
         fi
+    - name: Wait for the service to stabilize
+      run: |
+       echo "Waiting for service to stabilize..."
+       aws ecs wait services-stable --cluster my-node-student103 --services my-node-service-student103
+    - name: Featch_Public_IP_Address
+      run: |
+       task_id=$(aws ecs list-tasks --cluster my-node-student103 --family node-app-deploy-student103 --query 'taskArns[0]' --output text | awk -F / '{print $NF}')
+       task_arn=$(aws ecs describe-tasks --cluster my-node-student103 --tasks $task_id --query 'tasks[0].taskArn' --output text) eni_number=$(aws ecs describe-tasks --cluster my-node-student103 --tasks $task_arn --query 'tasks[0].attachments[0].details[?name==`networkInterfaceId`].value' --outputtext)
+       eni_id=$eni_number
+       public_ip=$(aws ec2 describe-network-interfaces --network-interface-ids $eni_id --query 'NetworkInterfaces[0].Association.PublicIp' --output text)
+       echo $public_ip
