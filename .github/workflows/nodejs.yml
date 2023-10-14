@@ -96,7 +96,7 @@ jobs:
          else
          echo "Secret does not exist. Creating..."
          aws secretsmanager create-secret \
-           --name student102\
+           --name student103\
            --description "Username and Password of MyJfrog" \
            --secret-string "${{ secrets.JFROG_CRED }}"
          fi
