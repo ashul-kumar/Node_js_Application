@@ -128,7 +128,7 @@ jobs:
          aws ecs create-service --cluster my-node-student103 --service-name my-node-service-student103 --task-definition node-app-deploy-student103:$latest_revision --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-0ab5a9b7768b9b147],securityGroups=[sg-014331ad55ed36e96],assignPublicIp=ENABLED}"
         fi
     - name: Wait for the service to stabilize
-        run: |
+      run: |
          echo "Waiting for service to stabilize..."
          aws ecs wait services-stable --cluster my-node-student103 --services my-node-service-student103
     - name: Featch_Public_IP_Address
