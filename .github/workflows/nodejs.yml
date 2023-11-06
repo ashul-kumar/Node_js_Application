@@ -129,7 +129,7 @@ jobs:
         fi
     - name: Wait for the service to stabilize
       run: |
-       echo "Waiting for service to stabilize..."
+       echo " Waiting for service to stabilize... "
        aws ecs wait services-stable --cluster my-node-student103 --services my-node-service-student103 
     - name: Featch_Public_IP_Address
       run: |
